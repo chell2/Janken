@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>みつごう！ちゃちゃまるの森</title>
+	<meta name="description" content=“ちゃちゃまる好きのためのミニゲーム！”>
+	<link rel="stylesheet" href="css/style-gamemain.css">
+	<link href="https://fonts.googleapis.com/earlyaccess/nicomoji.css" rel="stylesheet">
+</head>
+
+<body>
+	<header>
+		<div class="iconBox">
+			<a href="https://www.nintendo.co.jp/switch/acbaa/index.html"><img src="img/Nintendo_switch_logo.png"
+					class="icon"></a>
+			<iframe width="60" height="60" src="https://www.youtube.com/embed/2GhhV_WGsa0" title="YouTube video player"
+				frameborder="0"
+				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+				allowfullscreen></iframe>
+		</div>
+		<h1>みつごう！ちゃちゃまるの森</h1>
+	</header>
+	<main>
+		<div id="hajimeni" class="frame">
+			<h3></h3>
+			<div class="top-wrap">
+				<div class="chacha-box">
+					<img src="img/chachamaru.png" alt="" class="chacha-top">
+				</div>
+				<div class="comment-box">
+					<div id="comment-cha">
+						<div id="comment01">
+							<p><span class="name-tag">ちゃちゃまる</span></p>
+							<p>よっ！　オイラは　<span class="emp-name">ちゃちゃまる</span>！<br>
+								強くてカッコいい<br>
+								キンニクヒーローになるのが<br>夢なんだー！<br>
+								オマエは・・・？
+							</p>
+						</div>
+					</div>
+					<div class="btn-box" id="btnBox">
+						<button id="name-btn">「私のなまえは・・・」</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="shuukaku" class="frame">
+			<h3>何をあげる？</h3>
+			<div class="place">
+				<div id="yama_btn">山でさがす</div>
+				<div id="umi_btn">海でさがす</div>
+			</div>
+		</div>
+
+		<div id="mochimono" class="frame">
+			<h3>ポケットに あつめよう</h3>
+			<div id="pocket">
+			</div>
+		</div>
+
+		<div id="junbi" class="frame">
+			<br>
+			<h3>プレゼントのじゅんびができました！</h3>
+			<div id="giftBox"></div>
+		</div>
+
+		<div id="ageru" class="frame">
+			<h3>ちゃちゃまるにみつごう❤︎</h3>
+			<img src="img/chachamaru.jpeg" class="chacha-bottom">
+
+			<div id="comment03">
+				<p class="name"><span class="name-tag">ちゃちゃまる</span></p>
+				<div id="reaction1"></div>
+			</div>
+			<div class="shita">
+				<a href="#kekka">　▶︎ ▶︎ ▶︎　</a>
+			</div>
+		</div>
+
+		<div id="kekka" class="frame">
+			<h3><span id="user-name"></span>さんと ちゃちゃまるの親密度</h3>
+			<div class="bottom-wrap">
+				<p>今回のポイント：<span id="point1"></span>P</p>
+				<p>ごうけい：<span id="friendship"></span></p>
+			</div>
+			<div class="main-modoru">
+				<button onclick="location.href='#shuukaku'" class="modoru-btn">次のプレゼントを<br>じゅんびする</buton>
+			</div>
+		</div>
+
+
+	</main>
+	<footer>
+	</footer>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script>
+		const button = document.querySelector('button');
+		const comment01 = document.querySelector('#comment01');
+		button.onclick = function () {
+			let name = prompt('名前を入力してください');
+			comment01.remove();
+			$("#comment-cha").html(
+				'<div id = "comment02"><p><span class="name-tag">ちゃちゃまる</span></p>'
+				+ '<p><span class="emp-name">' + name + '</span>' + 'っていうのか！<br>これからよろしくなー！！</p>'
+				+ '<p>勝負するなら　いつでも<br>ばっちこいだぞー！！　ふんふん</p>');
+			$("#btnBox").html('<button onclick = "location.href=\'#shuukaku\'" id= "start-btn">ゲームをはじめる</buton>');
+			$("#user-name").text(name);
+		}
+	</script>
+	<script>
+		// 山で収穫（＝山のおみくじを引き結果をポケットに追加）
+		$('#yama_btn').on('click', function () {
+			// 1.乱数(0〜2)
+			const rdmY = Math.floor(Math.random() * 3);
+			// 2.if分岐処理
+			let getY = "";
+			if (rdmY == 0) { getY = '<button onclick="pickApple()" class="apple koro"><img src="img/apple.png" class="item"></button>' };
+			if (rdmY == 1) { getY = '<button onclick="pickOrange()" class="orange koro"><img src="img/orange.png" class="item"></button>' };
+			if (rdmY == 2) { getY = '<button onclick="pickCherry()" class="cherry koro"><img src="img/cherry.png" class="item"></button>' };
+			// 3.表示処理
+			$('#pocket').append(getY);
+		});
+
+		// 海で収穫（＝海のおみくじを引き結果をポケットに追加）
+		$('#umi_btn').on('click', function () {
+			// 1.乱数(0〜2)
+			const rdmU = Math.floor(Math.random() * 3);
+			// 2.if分岐処理
+			let getU = "";
+			if (rdmU == 0) { getU = '<button onclick="pickAji()" class="aji skew"><img src="img/aji.png" class="item"></button>' };
+			if (rdmU == 1) { getU = '<button onclick="pickTai()" class="tai skew"><img src="img/tai.png" class="item"></button>' };
+			if (rdmU == 2) { getU = '<button onclick="pickBoots()" class="boots poyon"><img src="img/boots.png" class="item"></button>' };
+			// 3.表示処理
+			$('#pocket').append(getU);
+		});
+
+
+		// ポケットからプレゼントを選ぶ（＝自分の出す手を決める）
+		// ..画像ボタンクリックでアラート表示→okで画像を消す&giftBoxに番号表示
+		// 山のアイテム
+		// !!りんご
+		function pickApple() {
+			var result = confirm('りんごをあげますか？');
+			if (result) {
+				console.log('りんごをあげる');
+				// getElementById()、getElementsByClassName()では、それぞれID名・クラス名どちらかしか指定できない
+				// document.querySelector()ではID名もクラス名も両方指定できる。ただし、'.sample''#sample'の書き分け必要
+				// document.querySelector()は要素を1つだけ取得する。これでクリックしたボタンタグを取得。
+				const btnTag = document.querySelector('.apple');
+				btnTag.remove();
+				// giftBoxを書き換える
+				$("#giftBox").html('<button type="button" id="gift" value="0"><img src="img/giftbox1.png" class="box"></button>');
+				// ページ遷移
+				location.href = "#junbi";
+			}
+			else { console.log('りんごをしまう'); }
+		}
+		// !!オレンジ
+		function pickOrange() {
+			var result = confirm('オレンジをあげますか？');
+			if (result) {
+				console.log('オレンジをあげる');
+				const btnTag = document.querySelector('.orange')
+				btnTag.remove()
+				$("#giftBox").html('<button type="button" id="gift" value="1"><img src="img/giftbox1.png" class="box"></button>');
+				// ページ遷移
+				location.href = "#junbi";
+			}
+			else { console.log('オレンジをしまう'); }
+		}
+		// !!さくらんぼ
+		function pickCherry() {
+			var result = confirm('さくらんぼをあげますか？');
+			const target = document.getElementsByClassName('cherry');
+			if (result) {
+				console.log('さくらんぼをあげる');
+				const btnTag = document.querySelector('.cherry')
+				btnTag.remove()
+				$("#giftBox").html('<button type="button" id="gift" value="2"><img src="img/giftbox1.png" class="box"></button>');
+				// ページ遷移
+				location.href = "#junbi";
+			}
+			else { console.log('さくらんぼをしまう'); }
+		}
+
+		// 海のアイテム
+		// !!あじ
+		function pickAji() {
+			var result = confirm('あじをあげますか？');
+			if (result) {
+				console.log('あじをあげる');
+				const btnTag = document.querySelector('.aji')
+				btnTag.remove()
+				$("#giftBox").html('<button type="button" id="gift" value="3"><img src="img/giftbox2.png" class="box"></button>');
+				// ページ遷移
+				location.href = "#junbi";
+			}
+			else { console.log('あじをしまう'); }
+		}
+		// !!たい
+		function pickTai() {
+			var result = confirm('たいをあげますか？');
+			if (result) {
+				console.log('たいをあげる');
+				const btnTag = document.querySelector('.tai')
+				btnTag.remove()
+				$("#giftBox").html('<button type="button" id="gift" value="4"><img src="img/giftbox2.png" class="box"></button>');
+				// ページ遷移
+				location.href = "#junbi";
+			}
+			else { console.log('たいをしまう'); }
+		}
+		// !!長靴
+		function pickBoots() {
+			var result = confirm('ながぐつをあげますか？');
+			if (result) {
+				console.log('ながぐつをあげる');
+				const btnTag = document.querySelector('.boots')
+				btnTag.remove()
+				$("#giftBox").html('<button type="button" id="gift" value="5"><img src="img/giftbox2.png" class="box"></button>');
+				// ページ遷移
+				location.href = "#junbi";
+			}
+			else { console.log('ながぐつをしまう'); }
+		}
+
+
+		// プレゼントをクリック（＝じゃんけんスタート！）
+		// プレゼントの中身（giftNumber 0〜5：自分の手）で条件分岐
+		// ..途中から追加されたHTML要素を検出するには、対象(id)を最初から存在している'div'にすること！
+		// 相手のほしいもの（favNumber 0〜5：相手の手）によりリアクションを分ける
+		// リアクションに応じてポイント設定
+
+		let score = 0
+
+		$('#giftBox').on('click', function () {
+			// 0.ページ遷移
+			location.href = "#ageru";
+
+			// 1.要素の取得
+			const giftValue = document.getElementById('gift');
+			const giftNumber = giftValue.getAttribute('value');
+			console.log(giftNumber); // 確認
+
+			// 2.乱数（0〜5：相手の手）を設定
+			const favNumber = Math.floor(Math.random() * 6);
+			console.log(favNumber); // 確認
+
+			// 3.if分岐処理
+			// !!りんごをあげる場合
+			if (giftNumber == 0) {
+				if (favNumber == 0) {
+					$("#reaction1").html('<p>サンキューな！<br>オイラ　<span class="giftName">りんご</span>　ダイスキなんだー！　ふんふん</p>');
+					$("#point1").text('＋5');
+					score += 5;
+					console.log(score);
+				} else if (favNumber == 1) {
+					$("#reaction1").html('<p>なにー！　こんなにウマそうな<span class="giftName">りんご</span><br>もらっちゃっていいのかー？</p>');
+					$("#point1").text('＋5');
+					score += 5;
+					console.log(score);
+				} else if (favNumber == 2) {
+					$("#reaction1").html('<p>おっ！　<span class="giftName">りんご</span>かー！　いいニオイだな！<br>ありがたくいただくぞー！！</p>');
+					$("#point1").text('+1');
+					score++;
+					console.log(score);
+				} else if (favNumber == 3) {
+					$("#reaction1").html('<p>へっ？　オイラにプレゼント？<br>ひょっとして　何か相談でもあるのかー？　ふんふん</p>');
+					$("#point1").text('0');
+					console.log(score);
+				} else if (favNumber == 4) {
+					$("#reaction1").html('<p>オイラ、<span class="giftName">りんご</span>より　さかながスキだけど<br>キンニクのためにいただくぞー！</p>');
+					$("#point1").text('-1');
+					score--;
+					console.log(score);
+				} else if (favNumber == 5) {
+					$("#reaction1").html('<p>オイラ、<span class="giftName">りんご</span>はニガテなんだ・・・<br>でも　キントレならまけないぞー！</p>');
+					$("#point1").text('-2');
+					score -= 2;
+					console.log(score);
+				}
+			}
+
+			// !!オレンジをあげる場合
+			else if (giftNumber == 1) {
+				if (favNumber == 0) {
+					$("#reaction1").html('<p>ちょうど今　<span class="giftName">オレンジ</span>がほしかったんだー！　ありがとな！</p>');
+					$("#point1").text('+1');
+					score++;
+					console.log(score);
+				} else if (favNumber == 1) {
+					$("#reaction1").html('<p>おおっ！　<span class="giftName">オレンジ</span>かー！<br>オイラ、これ　ダイスキなんだ！　ありがとなー！</p>');
+					$("#point1").text('＋5');
+					score += 5;
+					console.log(score);
+				} else if (favNumber == 2) {
+					$("#reaction1").html('<p><span class="giftName">オレンジ</span>かー！　いいニオイだなー！　ふんふん</p>');
+					$("#point1").text('0');
+					console.log(score);
+				} else if (favNumber == 3) {
+					$("#reaction1").html('<p><span class="giftName">オレンジ</span>かー！　いいニオイだなー！　ふんふん</p>');
+					$("#point1").text('0');
+					console.log(score);
+				} else if (favNumber == 4) {
+					$("#reaction1").html('<p>へっ？　これ、もらっていいのか？<br>もしかして　オイラと一緒に　トレーニングしたいのかー？</p>');
+					$("#point1").text('0');
+					console.log(score);
+				} else if (favNumber == 5) {
+					$("#reaction1").html('<p><span class="giftName">オレンジ</span>だとー？<br>ここで会ったが　100年目！　今日こそ決着をつけるぞ！</p>');
+					$("#point1").text('-2');
+					score -= 2;
+					console.log(score);
+				}
+			}
+
+			// !!さくらんぼをあげる場合
+			else if (giftNumber == 2) {
+				if (favNumber == 0) {
+					$("#reaction1").html('<p>おっ　<span class="giftName">さくらんぼ</span>かー！　いいニオイだな！<br>ありがたくいただくぞー！！</p>');
+					$("#point1").text('+1');
+					score++;
+					console.log(score);
+				} else if (favNumber == 1) {
+					$("#reaction1").html('<p>サンキューな！<br>オイラ、<span class="giftName">さくらんぼ</span>　ダイスキなんだー！　ふんふん</p>');
+					$("#point1").text('＋5');
+					score += 5;
+					console.log(score);
+				} else if (favNumber == 2) {
+					$("#reaction1").html('<p>うおー！　<span class="giftName">さくらんぼ</span>じゃんかー！<br>これ　もらっていいのか？　ありがとな！！</p>');
+					$("#point1").text('＋5');
+					score += 5;
+					console.log(score);
+				} else if (favNumber == 3) {
+					$("#reaction1").html('<p>ちょうど　オマエのこと　考えてたとこだぞ！<br><span class="giftName">さくらんぼ</span>ありがとなー！</p>');
+					$("#point1").text('0');
+					console.log(score);
+				} else if (favNumber == 4) {
+					$("#reaction1").html('<p>オイラ、<span class="giftName">さくらんぼ</span>は　ニガテだけど<br>キンニクのために　いただくぞー！</p>');
+					$("#point1").text('-1');
+					score--;
+					console.log(score);
+				} else if (favNumber == 5) {
+					$("#reaction1").html('<p><span class="giftName">さくらんぼ</span>だとー？　オマエも　これ、キライだったのか？</p>');
+					$("#point1").text('-2');
+					score -= 2;
+					console.log(score);
+				}
+			}
+
+			// !!あじをあげる場合
+			else if (giftNumber == 3) {
+				if (favNumber == 0) {
+					$("#reaction1").html('<p>お？　ひょっとして、オマエも　<span class="giftName">あじ</span>が　キライなのか？</p>');
+					$("#point1").text('-2');
+					score -= 2;
+					console.log(score);
+				} else if (favNumber == 1) {
+					$("#reaction1").html('<p><span class="giftName">あじ</span>かー。<br>それより近ごろ　キンニクの調子はどうだー？</p>');
+					$("#point1").text('-1');
+					score--;
+					console.log(score);
+				} else if (favNumber == 2) {
+					$("#reaction1").html('<p><span class="giftName">あじ</span>を抱えて　どうしたんだー？<br>オイラん家の周りで　ジョギングかー？</p>');
+					$("#point1").text('0');
+					console.log(score);
+				} else if (favNumber == 3) {
+					$("#reaction1").html('<p>おおっ！　<br>オイラ、<span class="giftName">あじ</span>ダイスキなんだ！　ありがとなー！</p>');
+					$("#point1").text('＋5');
+					score += 5;
+					console.log(score);
+				} else if (favNumber == 4) {
+					$("#reaction1").html('<p>よお！　さっきちょうど　オマエが<span class="giftName">あじ</span>をくれる<br>夢をみたんだー！　ありがとな！</p>');
+					$("#point1").text('+1');
+					score++;
+					console.log(score);
+				} else if (favNumber == 5) {
+					$("#reaction1").html('<p><span class="giftName">あじ</span>かー！　ウマそうだなー！　ふんふん</p>');
+					$("#point1").text('0');
+					console.log(score);
+				}
+			}
+
+			// !!たいをあげる場合
+			else if (giftNumber == 4) {
+				if (favNumber == 0) {
+					$("#reaction1").html('<p>お？　ひょっとして、オマエも　<span class="giftName">たい</span>が　キライなのか？</p>');
+					$("#point1").text('-2');
+					score -= 2;
+					console.log(score);
+				} else if (favNumber == 1) {
+					$("#reaction1").html('<p>オイラ、<span class="giftName">たい</span>は　ニガテだけど<br>キンニクのために　いただくぞー！</p>');
+					$("#point1").text('-1');
+					score--;
+					console.log(score);
+				} else if (favNumber == 2) {
+					$("#reaction1").html('<p><span class="giftName">たい</span>かー！　ウマそうだなー！　ふんふん</p>');
+					$("#point1").text('0');
+					console.log(score);
+				} else if (favNumber == 3) {
+					$("#reaction1").html('<p>おっ！　こんなに　りっぱな<span class="giftName">たい</span>、<br>もらっちゃっていいのかー？　ふんふん');
+					$("#point1").text('＋5');
+					score += 5;
+					console.log(score);
+				} else if (favNumber == 4) {
+					$("#reaction1").html('<p>オイラ、<span class="giftName">たい</span>が大好物なんだ！　ありがとなー！</p>');
+					$("#point1").text('＋5');
+					score += 5;
+					console.log(score);
+				} else if (favNumber == 5) {
+					$("#reaction1").html('<p>ウマそうな　<span class="giftName">たい</span>だなー！　サンキューな！！</p>');
+					$("#point1").text('+1');
+					score++;
+					console.log(score);
+				}
+			}
+			// !!長靴をあげる場合
+			else if (giftNumber == 5) {
+				if (favNumber == 0) {
+					$("#reaction1").html('<p>この<span class="giftName">ながぐつ</span>・・・よごれてないか？<br>オマエ、どこで手に入れてきたんだ？</p>');
+					$("#point1").text('-5');
+					score -= 5;
+					console.log(score);
+				} else if (favNumber == 1) {
+					$("#reaction1").html('<p>この<span class="giftName">ながぐつ</span>・・・よごれてないか？<br>オマエ、どこで手に入れてきたんだ？</p>');
+					$("#point1").text('-5');
+					score -= 5;
+					console.log(score);
+				} else if (favNumber == 2) {
+					$("#reaction1").html('<p>へ？　<span class="giftName">ながぐつ</span>、片方だけくれるのかー？　うーん・・・</p>');
+					$("#point1").text('-1');
+					score--;
+					console.log(score);
+				} else if (favNumber == 3) {
+					$("#reaction1").html('<p>わるいけど　オイラ、こういうのは　あまりはかないんだー・・・</p>');
+					$("#point1").text('-1');
+					score--;
+					console.log(score);
+				} else if (favNumber == 4) {
+					$("#reaction1").html('<p>これは・・・今度キントレするときにでも　使ってみるなー！</p>');
+					$("#point1").text('0');
+					console.log(score);
+				} else if (favNumber == 5) {
+					$("#reaction1").html('<p>この<span class="giftName">ながぐつ</span>、なかなかいいなー！<br>サンキューな！！</p>');
+					$("#point1").text('+1');
+					score++;
+					console.log(score);
+				}
+			}
+			const giftTag = document.querySelector('#gift');
+			giftTag.remove();
+
+			// 親密度の表示（＝得点結果）
+			// ..span.friendshipに上記scoreをハートの数で表示する
+
+			// まず、ハートを空にする
+			$("#friendship").empty();
+
+			// スコアが1以上の時だけ表示する
+			let n = score;
+			console.log(n);
+
+			if (0 < n && n < 15) {
+				const hearts = '&#9829;';
+				console.log(`hearts: ${hearts.repeat(n)}`);
+				$('#friendship').append(`${hearts.repeat(n)}`);
+			}
+			else if (-10 < n && n < 0) {
+				const heartsW = '&#9825;';
+				console.log(`heartsW: ${heartsW.repeat(n * -1)}`);
+				$('#friendship').append(`${heartsW.repeat(n * -1)}`);
+			}
+			else if (15 <= n) {
+				// 1.自身のページを別のページ遷移する方法
+				location.href = "gameclear.html";
+				// 2.別画面を起動し、そちらでページ遷移する方法
+				// open("---url----", "_blank");
+			}
+			else if (n <= -10) {
+				location.href = "gameover.html";
+			}
+		});
+	</script>
+	<script>
+		; (function ($) {
+			$.fn.letterDrop = function () {
+				// Chainability
+				return this.each(function () {
+					var obj = $(this);
+					var drop = {
+						arr: obj.text().split(''),
+						range: {
+							min: 1,
+							max: 9
+						},
+						styles: function () {
+							var dropDelays = '\n', addCSS;
+							for (i = this.range.min; i <= this.range.max; i++) {
+								dropDelays += '.ld' + i + ' { animation-delay: 1.' + i + 's; }\n';
+							}
+							addCSS = $('<style>' + dropDelays + '</style>');
+							$('head').append(addCSS);
+						},
+						main: function () {
+							var dp = 0;
+							obj.text('');
+							$.each(this.arr, function (index, value) {
+								dp = dp.randomInt(drop.range.min, drop.range.max);
+								if (value === ' ')
+									value = '&nbsp'; //Add spaces
+								obj.append('<span class="letterDrop ld' + dp + '">' + value + '</span>');
+							});
+						}
+					};
+					Number.prototype.randomInt = function (min, max) {
+						return Math.floor(Math.random() * (max - min + 1) + min);
+					};
+					// Create styles
+					drop.styles();
+					// Initialise
+					drop.main();
+				});
+			};
+		}(jQuery));
+		// USAGE
+		$('h1').letterDrop();
+	</script>
+</body>
+
+</html>

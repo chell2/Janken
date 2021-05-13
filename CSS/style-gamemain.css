@@ -1,0 +1,571 @@
+/* 共通 */
+body{
+    margin:0;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 28px;
+    font-family: "Nico Moji";
+    background-image: url(../img/bgimg_atsumori1.png);
+}
+header{
+    background-color: transparent;
+    text-align: center;
+    color: #fff;
+    text-shadow: 2px 3px 4px rgb(14, 65, 56); 
+}
+main{
+    width: 88%;
+    max-width: 960px;
+    min-width: 480px;
+    margin-top: 45px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 2px;
+    padding-bottom: 20px;
+    background-color: rgba(72,209,204,0.65);
+}
+footer{
+    background-color: #fff;
+    border-bottom:1px solid #ccc;
+    text-align: center;
+}
+/* ------------------------------- */
+/* タイトル表示*/
+h1 {
+  margin: 0;
+  padding: 0;
+  font-weight: 400;
+  font-size: 2em;
+  color: green;
+}
+.letterDrop {
+  position: relative;
+  top: 0;  
+  display: inline-block;
+  text-transform: uppercase; 
+  letter-spacing: 0.2em;
+  opacity: 0.8;
+  transform: rotateX(-90deg);
+  animation: letterDrop 1.2s ease 1 normal forwards;
+}
+@keyframes letterDrop {
+    10% {
+        opacity: 0.5;
+    }
+    20% {
+        opacity: 0.8;
+        top: 0em;
+        transform: rotateX(-360deg);
+    }
+    100% {
+        opacity: 1;
+        top: 0.2em;
+        transform: rotateX(360deg);
+    }
+}
+span:nth-child(2n) {
+  color: #FFF;
+}
+span:nth-child(5n) {
+  color: yellowgreen;
+}
+/* ------------------------------- */
+/* アンカー設定 */
+a:link, a:visited, a:active {
+  text-decoration: none;
+  color: green;
+  font-size: small;
+}
+a:hover {
+  text-decoration: none;
+  color: #FFF;
+  font-size: small;
+}
+
+/* .frame一覧
+#hajimeni
+#shuukaku
+#mochimono
+#junbi
+#ageru
+#kekka */
+
+#shuukaku{
+  margin-top: 400px;
+}
+#junbi{
+  margin-top: 400px;
+}
+#ageru{
+  margin-top: 600px;
+}
+#kekka{
+  margin-top: 600px;
+  margin-bottom: 900px;
+}
+
+
+/* ------------------------------- */
+/* トップ */
+.icon{
+	width: 60px;
+	height: 60px;
+}
+.iconBox{
+    text-align: right;
+}
+/* 項目タイトル */
+h3{
+    margin-top: 10px;
+}
+/* トップ外枠 */
+.top-wrap{
+	display: flex;
+	flex-direction: row;
+	justify-content: left;
+	align-items: center;
+}
+/* ちゃちゃ枠（左） */
+.chacha-box{
+	width: 50%;
+	text-align: right;
+}
+/* ちゃちゃまる画像・上 */
+img.chacha-top{
+	width: 90%;
+	height: auto;
+	object-fit: contain;
+    border-radius: 20px;
+}
+/* コメント外枠（右） */
+.comment-box{
+	width: 35%;
+  margin: auto;
+  font-size: 18px;
+  font-weight: bold;
+	font-family: Roboto, "Yu Gothic Medium", "游ゴシック Medium", YuGothic, "游ゴシック体", "ヒラギノ角ゴ Pro W3", "メイリオ", sans-serif;
+}
+/* ふきだし1 */
+#comment01 {
+     position: relative;
+     display: inline-block;
+     width: 98%; 
+     text-align: left;
+     color: darkgreen;
+     padding: 25px;
+     background-color: #FFF;
+     border-radius: 40px;
+}
+#comment01:before {
+     content: '';
+     position: absolute;
+     display: block;
+     z-index: 1;
+     border-style: solid;
+     border-color: transparent #FFF;
+     border-width: 20px 20px 20px 0;
+     top: 50%;
+     left: -10px;
+     margin-top: -10px;
+}
+/* ふきだし2（ユーザー名入力後に表示） */
+#comment02 {
+     position: relative;
+     display: inline-block;
+     width: 98%; 
+     text-align: left;
+     color: darkgreen;
+     padding: 25px;
+     background-color: #FFF;
+     border-radius: 40px;
+}
+#comment02:before {
+     content: '';
+     position: absolute;
+     display: block;
+     z-index: 1;
+     border-style: solid;
+     border-color: transparent #FFF;
+     border-width: 20px 20px 20px 0;
+     top: 50%;
+     left: -10px;
+     margin-top: -10px;
+}
+/* コメント内名札（ふきだし01〜03共通） */
+.name-tag {
+	background: linear-gradient(transparent 55%, #ff7f7f 0%);
+    font-weight: bolder;
+}
+span.emp-name {
+	color: #ff7f7f;
+    font-weight: bolder;
+}
+/* ボタン共通 */
+.btn-box{
+	width: 98%;
+	height: 60px;
+	margin: 30px;
+  text-align: center;
+}
+/* ユーザー名入力ボタン */
+#name-btn  {
+  width: 100%;
+  height: 100%;
+  color: green;
+  /* font-family: "Nico Moji"; */
+  font-size: 18px;
+  background: transparent;
+  padding: auto 30px;
+  border: 3px solid green;
+  border-radius: 10px;
+  position: relative;
+  z-index: 1;
+  transition: .2s;
+}
+#name-btn:hover {
+	background-color: #FFF;
+	border-color: green;
+	color: green;
+	/* letter-spacing: 0.4em; */
+	font-weight: bold;
+} 
+/* ゲームスタートボタン */
+#start-btn {
+  width: 100%;
+  height: 100%;
+  color: green;
+  font-family: "Nico Moji";
+  font-size: 22px;
+  letter-spacing: 0.6em;
+  background: transparent;
+  padding: auto 30px;
+  border: 3px solid green;
+  border-radius: 4px;
+  position: relative;
+  z-index: 1;
+  transition: .2s;
+}
+#start-btn::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  background: green;
+  transform-origin: 100% 50%;
+  transform: scaleX(0);
+  transition: transform ease .3s;
+}
+#start-btn:hover {
+  color: #fff;
+}
+#start-btn:hover::before {
+  transform-origin: 0% 50%;
+  transform: scaleX(1);
+}
+
+/*---------------------*/
+/* メイン */
+/* ボタン共通（山・海・アイテム） */
+button{
+    border: 0px;
+    background-color: transparent;
+}
+/* 山・海ボタン設定 */
+.place{
+    width: 100%;
+    height: 300px;
+    display: flex;
+    justify-content: space-around;
+}
+#yama_btn{
+    width: 45%;
+    height: auto;
+    text-align: center;
+    background-image: url(../img/yama1.jpeg);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+#umi_btn{
+    width: 45%;
+    height: auto;
+    text-align: center;
+    background-image: url(../img/umi2.jpeg);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+/* ポケットの設定 */
+#pocket{
+    margin: 0 auto;
+    padding: 10px auto;
+    text-align: center;
+    vertical-align: middle;
+    width: 80%;
+    min-width: 120px;
+    min-height: 150px;
+    background-color: #FFF;
+    border-radius: 80px;
+}
+/* アイテムの設定 */
+img.item {
+    width: 60px;
+    height: 60px;
+}
+img.item:hover{
+	/* 透明度を上げることで、画像の色を薄く見せる。*/
+	opacity:0.5;
+	/* リンクをホバーしたときのカーソルにする。*/
+	cursor: pointer;
+}
+/* 画像をクリックした瞬間 */
+img.item:active{
+	/* 要素を少し下げることで、押した感じを出す。*/
+	/* 今いる位置から相対的に3px下に配置する。*/
+	position: relative;
+	top: 3px;
+}
+/* アイテムの動き---------------------*/
+/* 果物のころん */
+.koro {
+  animation: koro 2.5s linear 0s 1;
+}
+@keyframes koro {
+  0%   { transform: translate(0%, 0%); }
+  5%   { transform: translate(10%, 0%) rotate(10deg); }
+  25%  { transform: translate(20%, 0%) rotate(20deg); }
+  30%  { transform: translate(-10%, 0%) rotate(-10deg); }
+  35%  { transform: translate(-15%, 0%) rotate(-15deg); }
+  45%  { transform: translate(10%, 0%) rotate(10deg); }
+  50%  { transform: translate(15%, 0%) rotate(15deg); }
+  60%  { transform: translate(-5%, 0%) rotate(-5deg); }
+  65%  { transform: translate(-7%, 0%) rotate(-7deg); }
+  75%  { transform: translate(0%, 0%) rotate(0deg); }
+  100% { transform: translate(0%, 0%) rotate(0deg); }
+}
+/* 魚のぴちぴち（ずっと） */
+.skew {
+   animation: skew 2.3s linear infinite;
+}
+@keyframes skew {
+    0% {transform: skew(0deg, 0deg);}
+    5% {transform: skew(5deg, 4.2deg);}
+    10% {transform: skew(-4deg, -3deg);}
+    15% {transform: skew(3deg, 2.2deg);}
+    20% {transform: skew(-2deg, -1.5deg);}
+    25% {transform: skew(0.9deg, 0.9deg);}
+    30% {transform: skew(-0.6deg, -0.6deg);}
+    35% {transform: skew(0.3deg, 0.3deg);}
+    40% {transform: skew(-0.2deg, -0.2deg);}
+    45% {transform: skew(0.1deg, 0.1deg);}  
+    50% {transform: skew(0deg, 0deg);}
+}
+/* 長靴のぽよん */
+.poyon {
+  animation: poyon 1.1s linear 0s 1;
+}
+@keyframes poyon {
+  0%   { transform: scale(0.8, 1.4) translate(0%, -100%); }
+  10%  { transform: scale(0.8, 1.4) translate(0%, -15%); }
+  20%  { transform: scale(1.4, 0.6) translate(0%, 30%); }
+  30%  { transform: scale(0.9, 1.1) translate(0%, -10%); }
+  40%  { transform: scale(0.95, 1.2) translate(0%, -30%); }
+  50%  { transform: scale(0.95, 1.2) translate(0%, -10%); }
+  60%  { transform: scale(1.1, 0.9) translate(0%, 5%); }
+  70%  { transform: scale(1.0, 1.0) translate(0%, 0%); }
+  100% { transform: scale(1.0, 1.0) translate(0%, 0%); }
+}
+/*---------------------*/
+/* プレゼント画像の設定 */
+#giftBox{
+    width: 300px;
+    height: 300px; 
+    margin: 20px auto;
+}
+img.box {
+    width: 300px;
+    height: 300px;
+} 
+img.box:hover{
+    animation:katakata 3s infinite ease-in-out alternate;
+	cursor: pointer;
+}
+/* 画像をクリックした瞬間 */
+img.box:active{
+	opacity:0.5;
+	position: relative;
+	top: 3px;
+}
+@keyframes katakata {
+  0% {transform:translate(0, 0) rotate(0deg);}
+  5% {transform:translate(0, 0) rotate(0deg);}
+  22% {transform:translate(0, 0) rotate(-3deg);}
+  23% {transform:translate(0, -1px) rotate(0deg);}
+  24% {transform:translate(0, -1px) rotate(3deg);}
+  25% {transform:translate(1px, 0) rotate(-2deg);}
+  26% {transform:translate(0, 1px) rotate(0deg);}
+  27% {transform:translate(0, 0) rotate(3deg);}
+  28% {transform:translate(0, 0) rotate(0deg);}
+  100% {transform:translate(0, 0) rotate(0deg);}
+}
+/* ちゃちゃまる画像・下 */
+img.chacha-bottom{
+    width: 80%;
+    min-width: 300px;
+    height: auto;
+    margin: 0 10%;
+}
+/* ふきだし3 */
+#comment03 {
+     position: relative;
+     display: inline-block;
+     margin: 20px 10% 5px;
+     padding: 0 0 0 25px;
+     width: 78%;
+     min-height: 140px;
+     text-align: center;
+     background-color: #fff;
+     border-radius: 40px;
+     color: darkgreen;
+     font-size: 20px;
+     font-weight: bold;
+     font-family: Roboto, "Yu Gothic Medium", "游ゴシック Medium", YuGothic, "游ゴシック体", "ヒラギノ角ゴ Pro W3", "メイリオ", sans-serif;
+}
+#comment03:before {
+     content: '';
+     position: absolute;
+     display: block;
+     z-index: 1;
+     border-style: solid;
+     border-color: #fff transparent;
+     border-width: 0 20px 20px 20px;
+     top: -10px;
+     left: 50%;
+     margin-left: -10px;
+}
+/* コメント内名札の位置 */
+p.name{
+    text-align: left;
+}
+/* コメント内アイテム名 */
+span.giftName{
+    color: royalblue;
+    font-weight: bolder;
+}
+/* コメントから親密度に飛ぶための三角 */
+.shita{
+  width: 88%;
+  margin: 0;
+  text-align: right;
+  color: darkgreen;
+}
+/* 親密度・外枠 */
+.bottom-wrap{
+    margin-top: 0 auto;
+    padding: 0 auto;
+    text-align: center;
+}
+/* 親密度のハート */
+#friendship{
+    color: mediumvioletred;
+    font-weight: bold;
+}
+/* メインページの戻るボタンエリア */
+.main-modoru{
+  width: 60%;
+  margin: 150px auto;
+  text-align: center;
+}
+/* 結末の枠（クリア・ゲームオーバー） */
+.ketsumatsu{
+  width: 100%;
+  text-align: center;
+}
+/* ちゃちゃまる画像（クリア・ゲームオーバー） */
+.imageArea{
+    width: 80%;
+    min-width: 300px;
+    height: auto;
+    margin: 0 10%;
+}
+.imageAreaGo{
+    width: 80%;
+    min-width: 300px;
+    height: auto;
+    margin: 0 10%;
+}
+/* ふきだし4（クリア・ゲームオーバー） */
+.comment04 {
+     position: relative;
+     display: inline-block;
+     margin: 20px 10%;
+     padding: 0 0 0 25px;
+     width: 78%;
+     min-height: 140px;
+     text-align: center;
+     background-color: #fff;
+     border-radius: 40px;
+     color: darkgreen;
+     font-size: 20px;
+     font-weight: bold;
+     font-family: Roboto, "Yu Gothic Medium", "游ゴシック Medium", YuGothic, "游ゴシック体", "ヒラギノ角ゴ Pro W3", "メイリオ", sans-serif;
+}
+.comment04:before {
+     content: '';
+     position: absolute;
+     display: block;
+     z-index: 1;
+     border-style: solid;
+     border-color: #fff transparent;
+     border-width: 0 20px 20px 20px;
+     top: -10px;
+     left: 50%;
+     margin-left: -10px;
+}
+/* 戻るボタンエリア */
+.modoruBtn{
+    margin-top: 80px;
+    margin-bottom: 40px;
+    text-align: center;
+}
+/* 戻るボタン */
+.modoru-btn {
+  width: 60%;
+  height: 60%;
+  color: green;
+  font-family: "Nico Moji";
+  font-size: 22px;
+  letter-spacing: 0.6em;
+  background: transparent;
+  padding: auto 30px;
+  border: 3px solid green;
+  border-radius: 4px;
+  position: relative;
+  z-index: 1;
+  transition: .2s;
+}
+.modoru-btn::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  background: green;
+  transform-origin: 100% 50%;
+  transform: scaleX(0);
+  transition: transform ease .3s;
+}
+.modoru-btn:hover {
+  color: #fff;
+}
+.modoru-btn:hover::before {
+  transform-origin: 0% 50%;
+  transform: scaleX(1);
+}
